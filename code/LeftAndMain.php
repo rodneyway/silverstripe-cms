@@ -244,8 +244,8 @@ class LeftAndMain extends Controller {
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/dragdrop.js');
 		Requirements::javascript(SAPPHIRE_DIR . '/thirdparty/scriptaculous/controls.js');
 		
-		Requirements::javascript(THIRDPARTY_DIR . '/tree/tree.js');
-		Requirements::css(THIRDPARTY_DIR . '/tree/tree.css');
+		Requirements::javascript(THIRDPARTY_DIR . '/jstree/jquery.jstree.js');
+		Requirements::css(THIRDPARTY_DIR . '/jstree/themes/default/style.css');
 		
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.js');
 		Requirements::javascript(CMS_DIR . '/javascript/LeftAndMain.Tree.js');
@@ -296,7 +296,7 @@ class LeftAndMain extends Controller {
 				'sapphire/thirdparty/scriptaculous/dragdrop.js',
 				'sapphire/thirdparty/scriptaculous/controls.js',
 				'cms/javascript/LeftAndMain.js',
-				'sapphire/javascript/tree/tree.js',
+				'sapphire/javascript/jstree/jquery.jstree.js',
 				'sapphire/javascript/TreeSelectorField.js',
 		 		'cms/javascript/ThumbnailStripField.js',
 			)
@@ -516,7 +516,7 @@ class LeftAndMain extends Controller {
 
 		// getChildrenAsUL is a flexible and complex way of traversing the tree
 		$titleEval = '
-			"<li id=\"record-$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
+			"<li id=\"record-$child->ID\" data-id=\"$child->ID\" class=\"" . $child->CMSTreeClasses($extraArg) . "\">" .
 			"<a href=\"" . Controller::join_links(substr($extraArg->Link(),0,-1), "show", $child->ID) . "\" class=\"" . $child->CMSTreeClasses($extraArg) . "\" title=\"' 
 			. _t('LeftAndMain.PAGETYPE','Page type: ') 
 			. '".$child->class."\" >" . ($child->TreeTitle) . 
